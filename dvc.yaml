@@ -1,0 +1,42 @@
+stages:
+  data_ingestion:
+      cmd: python src/data_ingestion.py
+      deps: 
+        - src/data_ingestion.py
+      outs:
+        - data/preprocessed_data.csv
+
+  feature_engineering:
+      cmd: python src/feature_engineering.py
+      deps:
+        - src/feature_engineering.py
+        - data/preprocessed_data.csv
+      params:
+        - feature_engineering.ngram_range
+        - feature_engineering.test_size
+      outs:
+        - data/samples_feats.npy
+        - data/samples_targets.npy
+        - data/test_feats.npy
+        - data/test_targets.npy
+
+  model_training:
+      cmd: python src/build_model.py
+      deps:
+        - src/build_model.py
+        - data/samples_feats.npy
+        - data/samples_targets.npy
+      outs:
+        - models/xgboostCls.pkl
+  
+  model_evaluation:
+      cmd: python src/model_evaluation.py
+      deps:
+        - src/model_evaluation.py
+        - models/xgboostCls.pkl
+        - data/test_feats.npy
+        - data/test_targets.npy
+      metrics:
+        - metrics.json
+      outs:
+        - artifacts/confusion_matrix.png

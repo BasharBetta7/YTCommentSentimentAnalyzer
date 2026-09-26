@@ -1,0 +1,22 @@
+artifact_path: /home/bashar/Study/Projects/MLOps/end_to_end_ML_project/YTCommentSentimentAnalyzer/mlruns/1/models/m-27849b53fe994b1d9938730a1c20ed42/artifacts
+flavors:
+  python_function:
+    data: model.ubj
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.xgboost
+    python_version: 3.10.21
+  xgboost:
+    code: null
+    data: model.ubj
+    model_class: xgboost.sklearn.XGBClassifier
+    model_format: ubj
+    xgb_version: 3.2.0
+mlflow_version: 3.16.0
+model_id: m-27849b53fe994b1d9938730a1c20ed42
+model_size_bytes: 79473
+model_uuid: m-27849b53fe994b1d9938730a1c20ed42
+prompts: null
+run_id: f9c265fa51e348a5b9c8d6e5ec616fb4
+utc_time_created: '2026-09-26 12:28:53.892140'
