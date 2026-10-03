@@ -5,7 +5,7 @@ from nltk import WordNetLemmatizer
 import pandas as pd
 from pathlib import Path
 
-
+sentiment_dict = {'Positive':2,'Neutral':1,'Negative':0}
 
 def preprocess(comment):
     """Accept a comment column, and perform preprcoessing on it
@@ -28,7 +28,6 @@ def main():
         print("Ingesting the dataset ...")
         df = pd.read_csv("hf://datasets/AmaanP314/youtube-comment-sentiment/youtube-comments-sentiment.csv")
         df_reduced = df[['CommentText','Sentiment']]
-        sentiment_dict = {'Positive':2,'Neutral':1,'Negative':0}
         df_reduced['Sentiment'] = df_reduced['Sentiment'].apply(lambda x : sentiment_dict[x])
         df_reduced = df_reduced[~(df_reduced['CommentText'].str.strip() == '')]
         df_reduced.dropna(inplace=True)
