@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Comment Pulse — YouTube Sentiment",
+  "version": "1.1.0",
+  "description": "See the positive, neutral, and negative sentiment of comments on the current YouTube video.",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1/*",
+    "http://localhost/*"
+  ],
+  "action": {
+    "default_title": "Analyze YouTube comments",
+    "default_popup": "popup.html"
+  }
+}

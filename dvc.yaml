@@ -11,32 +11,28 @@ stages:
       deps:
         - src/feature_engineering.py
         - data/preprocessed_data.csv
-      params:
-        - feature_engineering.ngram_range
-        - feature_engineering.test_size
       outs:
-        - data/samples_feats.npy
-        - data/samples_targets.npy
-        - data/test_feats.npy
-        - data/test_targets.npy
+        - data/tokenized_test
+        - data/tokenized_train
+        - ./saved_tokenizer
 
   model_training:
       cmd: python src/build_model.py
       deps:
         - src/build_model.py
-        - data/samples_feats.npy
-        - data/samples_targets.npy
+        - data/tokenized_train
+        - data/tokenized_test
+        - ./saved_tokenizer
       outs:
-        - models/xgboostCls.pkl
+        - models/distillbert
   
   model_evaluation:
       cmd: python src/model_evaluation.py
       deps:
         - src/model_evaluation.py
-        - models/xgboostCls.pkl
-        - data/test_feats.npy
-        - data/test_targets.npy
+        - models/distillbert
+        - data/tokenized_test
       metrics:
         - metrics.json
       outs:
-        - artifacts/confusion_matrix.png
+        - eval_results
