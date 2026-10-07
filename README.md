@@ -1,6 +1,12 @@
 ### Youtube Comments sentiment analyzer
 #### GOAL: Chrome plugin that analyzes YT video comment section and give stats about the sentiment of the comments : (Pos percentage, Neg Percentage, Neu Percentage, comment marking ... )
 
+
+<p align="center">
+  <img src="demo.gif" alt="Demo" width="800">
+</p>
+
+
 ### Plan
 1. Data collection
 2. Data preprocessing 
