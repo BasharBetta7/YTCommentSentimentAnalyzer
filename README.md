@@ -9,7 +9,15 @@
 
 
 ### Powered by: distillbert-base-uncased finetuned on downstram sentiment classification task
-
+### How to run:
+#### Docker image [SIMPLEST]:
+PS: First, you need to install Docker into your machine (if not installed earlier).
+After cloning the repo into your local machine, execute the following command within the code directory:
+```shell
+docker compose up --build
+```
+which will build and run a docker container that will run the backend server.
+Then, Obtain the chrome extension "Comment Pulse" from the chrome extension store, and use it to analyze any opened youtube  video.
 ### Plan
 1. Data collection
 2. Data preprocessing 
