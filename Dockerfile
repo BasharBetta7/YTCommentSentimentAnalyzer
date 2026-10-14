@@ -10,6 +10,8 @@ COPY requirements-api.txt .
 
 RUN pip install -r requirements-api.txt
 
+RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+
 COPY backend/ backend/
 
 COPY src/ src/
