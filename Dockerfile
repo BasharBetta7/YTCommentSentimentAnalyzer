@@ -1,10 +1,24 @@
-FROM python:3.11-slim-buster
+FROM python:3.11-slim-bookworm
 
 WORKDIR /app
 
-COPY . /app
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1
 
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
 
-CMD ["python", "-m", "uvicorn", "backend.main:app", "--reload"]
+COPY requirements-api.txt .
+
+RUN pip install -r requirements-api.txt
+
+COPY backend/ backend/
+
+COPY src/ src/
+
+COPY models/distillbert/checkpoint-49587 models/distillbert/checkpoint-49587
+
+COPY saved_tokenizer/ saved_tokenizer/
+
+
+EXPOSE 8000
+
+CMD ["python", "-m", "uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000"]

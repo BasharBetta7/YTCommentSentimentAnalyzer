@@ -1,0 +1,15 @@
+.git
+.github
+.venv
+venv
+.env
+.env.*
+__pycache__
+*.pyc
+.pytest_cache
+.ipynb_checkpoints
+data/
+eval_results/
+mlruns/
+extension/
+*.ipynb

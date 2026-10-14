@@ -1,20 +1,14 @@
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
-import os
 import dotenv
 from backend.services import fetch_comments, predict_sentiments
-import requests
 import pickle
-from xgboost import XGBClassifier
-from sklearn.feature_extraction.text import TfidfVectorizer
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, DataCollatorWithPadding
 
-vectorizer_path = 'tfidf_vectorizer.pkl'
 model_path = 'models/distillbert/checkpoint-49587'
 tokenizer_path = 'saved_tokenizer'
 
-with open(vectorizer_path, "rb") as f:
-        vectorizer = pickle.load(f)
+
 model = AutoModelForSequenceClassification.from_pretrained(model_path)
 tokenizer = AutoTokenizer.from_pretrained(tokenizer_path)
 dotenv.load_dotenv()

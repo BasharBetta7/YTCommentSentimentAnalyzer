@@ -2,10 +2,13 @@
 #### GOAL: Chrome plugin that analyzes YT video comment section and give stats about the sentiment of the comments : (Pos percentage, Neg Percentage, Neu Percentage, comment marking ... )
 
 
+
 <p align="center">
   <img src="demo.gif" alt="Demo" width="800">
 </p>
 
+
+### Powered by: distillbert-base-uncased finetuned on downstram sentiment classification task
 
 ### Plan
 1. Data collection
@@ -20,7 +23,6 @@
 10. Deployment
 
 ### Chrome extension
-
 The frontend is in [`extension/`](extension/). It reads the current YouTube video,
 calls the backend's `/analyze` endpoint, and displays a sentiment percentage bar.
 
@@ -34,3 +36,5 @@ Then open `chrome://extensions`, enable Developer mode, and load `extension/` as
 an unpacked extension. Open a YouTube video, click Comment Pulse, and select
 **Analyze comments**. See the [extension setup and tests](extension/README.md)
 for prerequisites and configuration.
+
+
